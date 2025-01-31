@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出生帝国官方网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #8B0000, #4B0082);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid #gold;
+            transform: translateY(-20px);
+            transition: transform 0.5s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .imperial-court {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .emperor-card {
+            background: #2c2c2c;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+        }
+
+        .general-card {
+            background: #333;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .general-card:hover {
+            transform: translateY(-5px);
+            background: #404040;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .position {
+            color: #9370DB;
+            font-weight: bold;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .general-link {
+            color: #FFD700;
+            text-decoration: none;
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .general-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .imperial-court {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>出生帝国</h1>
+        <p>千秋万代，一统江山</p>
+    </header>
+
+    <div class="container">
+        <div class="imperial-court">
+            <div class="emperor-card">
+                <h2>皇室成员</h2>
+                <div class="position">皇帝</div>
+                <div class="name">王明霞</div>
+            </div>
+
+            <div>
+                <h2>军事统帅</h2>
+                <div class="generals-grid">
+                    <!-- 大将军（静态部分） -->
+                    <div class="general-card">
+                        <div class="position">大将军</div>
+                        <div class="name">王绣朝</div>
+                        <a href="https://v.douyin.com/ifG5dP1B/?disable_auto_expose=1&font_scale=1.0&auto_play_bgm=0&show_more_button=1&show_loading=1&title=" 
+                           class="general-link"
+                           target="_blank">
+                            查看详情 →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 将军数据与链接配置
+        const generals = [
+            { 
+                position: "前将军",
+                name: "雷东燕",
+                link: "https://v.douyin.com/ifGyS5EA/?disable_auto_expose=1&font_scale=1.0&auto_play_bgm=0&show_more_button=1&show_loading=1&title="
+            },
+            { 
+                position: "左将军",
+                name: "雷东莺",
+                link: "https://v.douyin.com/ifGPnoXR/?disable_auto_expose=1&font_scale=1.0&auto_play_bgm=0&show_more_button=1&show_loading=1&title="
+            },
+            { 
+                position: "右将军",
+                name: "樊亚春",
+                link: "https://v.douyin.com/ifGPKVJ7/?disable_auto_expose=1&font_scale=1.0&auto_play_bgm=0&show_more_button=1&show_loading=1&title="
+            },
+            { 
+                position: "后将军",
+                name: "侯大宇",
+                link: "https://v.douyin.com/ifG5RYua/?disable_auto_expose=1&font_scale=1.0&auto_play_bgm=0&show_more_button=1&show_loading=1&title="
+            }
+        ];
+
+     // 动态生成将军卡片
+        const generalsGrid = document.querySelector('.generals-grid');
+        
+        generals.forEach(general => {
+            const card = document.createElement('div');
+            card.className = 'general-card';
+            card.innerHTML = `
+                <div class="position">${general.position}</div>
+                <div class="name">${general.name}</div>
+                <a href="${general.link}" 
+                   class="general-link"
+                   target="_blank">
+                    查看详情 →
+                </a>
+            `;
+            generalsGrid.appendChild(card);
+        });
+
+        // 交互效果
+        document.querySelectorAll('.general-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // 页面加载动画
+        window.addEventListener('load', () => {
+            document.body.style.opacity = 1;
+            document.querySelector('.header').style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
+                   
+                   
